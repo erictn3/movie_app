@@ -15,15 +15,15 @@ function App() {
     fetch(FEATURED_API).then(res => res.json())
     .then(data => {
       console.log(data);
-      setMovies(data);      
+      setMovies(data.results);      
     })
   }, [])
 
     return (
       <div className="App">
-        {movies.length > 0 && movies.map((movie)=> (
-          <Movie />
-        ))}
+        {movies.length > 0 && movies.map((movie)=> 
+          <Movie key={movie.id} {...movie} />
+        )}
 
       </div>
     );
